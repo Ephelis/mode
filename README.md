@@ -1,2 +1,2 @@
 # mode
-Example Fabric mod for Minecraft 1.20.1
+Example Fabric mod for Minecraft 1.21.5
