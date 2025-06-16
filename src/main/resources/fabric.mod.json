@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "mode",
+  "version": "1.0.0",
+  "name": "Mode Example Mod",
+  "description": "An example mod skeleton.",
+  "authors": [],
+  "contact": {},
+  "license": "All Rights Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.example.mode.ExampleMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "fabric": "*",
+    "minecraft": "1.20.1"
+  }
+}
