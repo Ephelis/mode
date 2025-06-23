@@ -9,16 +9,25 @@ import net.minecraft.client.MinecraftClient;
 public class AutoHuntClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        // Register client command to open the AutoHunt UI
+        // Register client commands to open the challenge UI
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             dispatcher.register(ClientCommandManager.literal("autohuntui")
                     .executes(context -> {
                         MinecraftClient.getInstance().setScreen(new AutoHuntScreen());
                         return 1;
                     }));
+
+            dispatcher.register(ClientCommandManager.literal("challengeui")
+                    .executes(context -> {
+                        MinecraftClient.getInstance().setScreen(new AutoHuntScreen());
+                        return 1;
+                    }));
         });
 
-        // Register tick handler for automatic hunting logic
-        ClientTickEvents.END_CLIENT_TICK.register(client -> AutoHunter.onClientTick(client));
+        // Register tick handlers for automatic hunting and challenges
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            AutoHunter.onClientTick(client);
+            ChallengeHandler.onClientTick(client);
+        });
     }
 }
