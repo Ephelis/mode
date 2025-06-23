@@ -5,6 +5,8 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.ButtonWidget.PressAction;
 import net.minecraft.text.Text;
 
+import com.example.mode.client.ChallengeHandler;
+
 public class AutoHuntScreen extends Screen {
     public AutoHuntScreen() {
         super(Text.literal("Auto Hunt"));
@@ -25,6 +27,21 @@ public class AutoHuntScreen extends Screen {
             AutoHunter.start(true);
             this.close();
         }).dimensions(centerX - 100, centerY + 15, 200, 20).build());
+
+        // Toggle time warp
+        this.addDrawableChild(ButtonWidget.builder(Text.literal("Toggle Time Warp"), (PressAction) button -> {
+            ChallengeHandler.toggleTimeWarp();
+        }).dimensions(centerX - 100, centerY + 40, 200, 20).build());
+
+        // Toggle knockback multiplier
+        this.addDrawableChild(ButtonWidget.builder(Text.literal("Toggle Knockback"), (PressAction) button -> {
+            ChallengeHandler.toggleKnockback();
+        }).dimensions(centerX - 100, centerY + 65, 200, 20).build());
+
+        // Lightning purge hostile mobs
+        this.addDrawableChild(ButtonWidget.builder(Text.literal("Lightning Purge"), (PressAction) button -> {
+            ChallengeHandler.activateLightningPurge();
+        }).dimensions(centerX - 100, centerY + 90, 200, 20).build());
     }
 
     private void close() {
